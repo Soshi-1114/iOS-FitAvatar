@@ -25,7 +25,7 @@ struct HomeView: View {
                 }
                 .padding()
             }
-            .navigationTitle("FitAvatar")
+            .navigationTitle("")
             .navigationBarTitleDisplayMode(.large)
         }
     }
