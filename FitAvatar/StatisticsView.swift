@@ -84,14 +84,6 @@ struct StatisticsView: View {
                     icon: "clock.fill",
                     color: .orange
                 )
-
-                StatisticCard(
-                    title: "獲得XP",
-                    value: "\(totalXP)",
-                    unit: "XP",
-                    icon: "star.fill",
-                    color: .purple
-                )
             }
         }
     }
@@ -204,10 +196,6 @@ struct StatisticsView: View {
 
     private var totalMinutes: Int {
         filteredWorkouts.reduce(0) { $0 + $1.durationMinutes }
-    }
-
-    private var totalXP: Int {
-        filteredWorkouts.reduce(0) { $0 + $1.xpEarned }
     }
 
     private var weeklyData: [DayData] {
@@ -390,22 +378,11 @@ struct WorkoutHistoryRow: View {
 
             Spacer()
 
-            // 日付とXP
+            // 日付
             VStack(alignment: .trailing, spacing: 4) {
                 Text(formatDate(workout.date))
                     .font(.caption)
                     .foregroundColor(.secondary)
-
-                HStack(spacing: 2) {
-                    Image(systemName: "star.fill")
-                        .font(.caption2)
-                        .foregroundColor(.yellow)
-
-                    Text("+\(workout.xpEarned)")
-                        .font(.caption)
-                        .fontWeight(.medium)
-                        .foregroundColor(.blue)
-                }
             }
         }
         .padding()

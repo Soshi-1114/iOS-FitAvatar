@@ -72,16 +72,6 @@ struct SettingsView: View {
                     Text(appData.userName)
                         .font(.title2)
                         .fontWeight(.bold)
-
-                    HStack(spacing: 4) {
-                        Image(systemName: "star.fill")
-                            .font(.caption)
-                            .foregroundColor(.yellow)
-
-                        Text("レベル \(appData.getCurrentLevel())")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                    }
                 }
 
                 Spacer()
@@ -139,22 +129,6 @@ struct SettingsView: View {
                     Text("\(appData.weeklyWorkoutGoal)回")
                         .foregroundColor(.secondary)
                 }
-            }
-
-            Stepper(value: $appData.monthlyXPGoal, in: 100...10000, step: 100) {
-                HStack {
-                    Label("月間XP目標", systemImage: "star.circle.fill")
-                    Spacer()
-                    Text("\(appData.monthlyXPGoal) XP")
-                        .foregroundColor(.secondary)
-                }
-            }
-
-            NavigationLink(destination: GoalDetailView(
-                weeklyGoal: appData.weeklyWorkoutGoal,
-                monthlyXPGoal: appData.monthlyXPGoal
-            )) {
-                Label("目標の進捗を見る", systemImage: "chart.line.uptrend.xyaxis")
             }
         } header: {
             Text("目標設定")
