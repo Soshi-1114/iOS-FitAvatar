@@ -17,13 +17,10 @@ struct HomeView: View {
                 VStack(spacing: 20) {
                     // ヘッダー部分
                     headerSection
-                    
-                    // アバター表示部分
-                    avatarSection
-                    
+
                     // 今日のトレーニング部分
                     todayWorkoutSection
-                                        
+
                     Spacer()
                 }
                 .padding()
@@ -56,51 +53,6 @@ struct HomeView: View {
                     .foregroundColor(.primary)
             }
         }
-    }
-    
-    // MARK: - Avatar Section
-    private var avatarSection: some View {
-        NavigationLink(destination: AvatarDetailView()) {
-            VStack(spacing: 15) {
-                Text("あなたのアバター")
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .foregroundColor(.primary)
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(LinearGradient(
-                            gradient: Gradient(colors: [.blue.opacity(0.1), .purple.opacity(0.1)]),
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ))
-                        .frame(height: 320)
-                    
-                    VStack(spacing: 20) {
-                        // レーダーチャート（5段階グリッド表示）
-                        RadarChartView(
-                            data: appData.avatarStats.getRadarData(),
-                            size: 200,
-                            showLabels: true,
-                            showMultipleLevels: true
-                        )
-                        
-                        // 総合レベル
-                        HStack(spacing: 8) {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(.yellow)
-                            
-                            Text("総合レベル \(appData.avatarStats.overallLevel)")
-                                .font(.title3)
-                                .fontWeight(.semibold)
-                                .foregroundColor(.primary)
-                        }
-                    }
-                    .padding()
-                }
-            }
-        }
-        .buttonStyle(PlainButtonStyle())
     }
     
     // MARK: - Today's Workout Section
